@@ -7,7 +7,6 @@ import es.ftm.gxgz.calculadoraproduccion.model.Empresa;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
@@ -28,7 +27,7 @@ public class Main extends Application {
 			empresa = miBBDD.readEmpresa(this.configuracion.getEmpresaPredeterminada());
 			miBBDD.close();
 			
-			tituloVentana = empresa.getNombre();
+			tituloVentana = "Utilidades GXGZ - Pantalla Principal";
 			
 			FXMLLoader fXMLloader = new FXMLLoader(getClass().getClassLoader().getResource("config\\ventanaPrincipal.fxml"));
 			

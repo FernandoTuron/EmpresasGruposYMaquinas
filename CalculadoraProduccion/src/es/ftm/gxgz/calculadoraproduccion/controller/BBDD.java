@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import es.ftm.gxgz.calculadoraproduccion.model.Configuracion;
 import es.ftm.gxgz.calculadoraproduccion.model.Empresa;
 
 public class BBDD {
@@ -43,7 +42,7 @@ public class BBDD {
 	
 	public void establecerEmpresaPredeterminada() throws SQLException {		
         try {
-        	pst = connect.prepareStatement("SELECT ID, NOMBRE FROM Empresa WHERE Id=?");
+        	pst = connect.prepareStatement("SELECT IDEmpresa, NOMBRE FROM Empresa WHERE IdEmpresa=?");
         	pst.setString(1, this.empresaPredeterminada);	        	
             rs = pst.executeQuery();
 	            
@@ -59,19 +58,22 @@ public class BBDD {
         	System.out.println("ERROR -> No se ha podido establecer la empresa predeterminada. " + ex.getMessage());
         }
 	        
-        finally{
+        try {
         	rs.close();
-	        pst.close();
+			pst.close();
+		} 
+        
+        catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();		
 		}		
 	}
 	
 	public Empresa readEmpresa(String id){
 		Empresa empresa = null;
 		
-		try {
-			connect = DriverManager.getConnection("jdbc:sqlite:" + this.urlBBDD);
-			
-	        pst = connect.prepareStatement("SELECT ID, NOMBRE, ACTIVO FROM Empresa WHERE Id=?");
+		try {			
+	        pst = connect.prepareStatement("SELECT IDEmpresa, NOMBRE, ACTIVO FROM Empresa WHERE IdEmpresa=?");
 	        pst.setString(1, this.empresaPredeterminada);	        	
 	           rs = pst.executeQuery();
 	            

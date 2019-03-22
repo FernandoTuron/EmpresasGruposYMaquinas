@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="827.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <center>
       <Label text="Hola" BorderPane.alignment="CENTER">
          <font>
@@ -21,9 +21,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Archivo">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleArchivoConfiguracionAction" text="Configuración" />
+                  <MenuItem fx:id="idMnuArchivoConfiguracion" mnemonicParsing="false" onAction="#handleArchivoConfiguracionAction" text="Configuración" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="Salir" />
+              <MenuItem fx:id="idMnuArchivoSalir" mnemonicParsing="false" onAction="#handleArchivoSalirAction" text="Salir" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edición">
@@ -36,6 +36,11 @@
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Test">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleTestAbrirTestsAction" text="Abrir Tests" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
